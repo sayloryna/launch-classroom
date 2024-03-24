@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="favicon.png" type="image/png">
+  <title>Classroom - Cursos</title>
+  <script type="module" src="/js/index.js"></script>
+  <link rel="stylesheet" href="styles/styles.css">
+</head>
+
+<body>
+  <div class="container">
+    <main class="main-content">
+      <h2>Cursos</h2>
+      <form class="form new-course">
+        <div class="form__group">
+          <label for="name" class="form__label">Nombre: </label>
+          <input type="text" id="name" class="form__control" required>
+        </div>
+        <div class="form__group form__buttons">
+          <button class="form__button" type="submit">Crear curso</button>
+        </div>
+      </form>
+      Total: <span class="counter">0</span> cursos
+      <table class="table courses">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+    </main>
+  </div>
+  <div class="modal-error"></div>
+</body>
+
+</html>
