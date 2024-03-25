@@ -1,4 +1,5 @@
 import { showErrorModal } from "../../dom/index.js";
+import { students } from "../../index.js";
 import { Student } from "../../types.js";
 import { generateId } from "../../utils.js";
 
@@ -6,16 +7,29 @@ export const getStudentsTotal = (students: Student[]): number => {
   return students.length;
 };
 
-export const addStudent = (students: Student[], student: Student): void => {
-  if (students.includes(student)) {
-    showErrorModal("El estudiante que ya está en la lista");
+export const addStudent = (
+  students: Student[],
+  name: string,
+  lastName: string,
+  age: number,
+  email: string,
+  phoneNumber: string
+): void => {
+  let newStudent = {
+    id: generateId(students),
+    name,
+    lastName,
+    age,
+    email,
+    phoneNumber,
+  };
+  if (students.includes(newStudent)) {
+    console.log(showErrorModal("El estudiante ya esta en la lista"));
   } else {
-    students.push(student);
+    students.push(newStudent);
   }
 };
 
-// Crea una función para eliminar un estudiante de la lista de estudiantes
-// La función debe recibir un array de estudiantes y el id del estudiante a eliminar
 export const deleteStudent = (students: Student[], studentId: number): void => {
   students.forEach((student, index) => {
     if (student.id === studentId) {
