@@ -23,8 +23,15 @@ export const addStudent = (
     email,
     phoneNumber,
   };
-  if (students.includes(newStudent)) {
-    console.log(showErrorModal("El estudiante ya esta en la lista"));
+  if (
+    students.some(
+      (student) =>
+        student.name === newStudent.name &&
+        student.lastName === newStudent.lastName &&
+        student.age === newStudent.age
+    )
+  ) {
+    showErrorModal("El estudiante ya esta en la lista");
   } else {
     students.push(newStudent);
   }
