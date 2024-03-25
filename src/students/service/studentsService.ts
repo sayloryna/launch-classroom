@@ -5,14 +5,14 @@ import { generateId } from "../../utils.js";
 export const getStudentsTotal = (students: Student[]): number => {
   return students.length;
 };
-// Crea una función para obtener el total de estudiantes
-// La función debe recibir un array de estudiantes y devolver el total de estudiantes
-//  const getStudentsTotal =
 
-// Crea una función para añadir un estudiante a la lista de estudiantes
-// La función debe recibir un array de estudiantes y los datos del estudiante a añadir
-// Si el estudiante ya existe en la lista, muestra un error con showErrorModal
-// export const addStudent =
+export const addStudent = (students: Student[], student: Student) => {
+  if (students.includes(student)) {
+    showErrorModal("El estudiante que ya está en la lista");
+  } else {
+    students.push(student);
+  }
+};
 
 // Crea una función para eliminar un estudiante de la lista de estudiantes
 // La función debe recibir un array de estudiantes y el id del estudiante a eliminar
