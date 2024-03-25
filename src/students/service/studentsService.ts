@@ -6,7 +6,7 @@ export const getStudentsTotal = (students: Student[]): number => {
   return students.length;
 };
 
-export const addStudent = (students: Student[], student: Student) => {
+export const addStudent = (students: Student[], student: Student): void => {
   if (students.includes(student)) {
     showErrorModal("El estudiante que ya está en la lista");
   } else {
@@ -16,7 +16,13 @@ export const addStudent = (students: Student[], student: Student) => {
 
 // Crea una función para eliminar un estudiante de la lista de estudiantes
 // La función debe recibir un array de estudiantes y el id del estudiante a eliminar
-// export const deleteStudent =
+export const deleteStudent = (students: Student[], studentId: number): void => {
+  students.forEach((student, index) => {
+    if (student.id === studentId) {
+      students.splice(index, 1);
+    }
+  });
+};
 
 // Crea una función para obtener las opciones de estudiantes para rellenar un select
 // La función debe recibir un array de estudiantes
