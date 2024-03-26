@@ -11,7 +11,8 @@ export const getGradesTotal = (grades: Grade[]): number => {
 // La función debe recibir una nota
 // La función debe devolver un objeto con las mismas propiedades de la nota
 // más las propiedades studentName, studentLastName y courseName
-export const getGradeFullData = (grade: Grade): Object => {
+
+/*export const getGradeFullData = (grade: Grade): Object => {
   return {
     id: grade.id,
     studentId: grade.studentId,
@@ -23,7 +24,7 @@ export const getGradeFullData = (grade: Grade): Object => {
       ?.lastName,
     courseName: courses.find((course) => course.id === grade.courseId)?.name,
   };
-};
+};*/
 
 // Crea una función para eliminar una nota de la lista de notas
 // La función debe recibir un array de notas y el id de la nota a eliminar
