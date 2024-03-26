@@ -1,6 +1,6 @@
 import { showErrorModal } from "../../dom/index.js";
 import { students } from "../../index.js";
-import { Student } from "../../types.js";
+import { Student, StudentOption } from "../../types.js";
 import { generateId } from "../../utils.js";
 
 export const getStudentsTotal = (students: Student[]): number => {
@@ -51,7 +51,17 @@ export const deleteStudent = (students: Student[], studentId: number): void => {
 // La propiedad id debe ser el id del estudiante
 // La propiedad name debe ser el nombre del estudiante
 // La propiedad lastName debe ser el apellido del estudiante
-// export const getStudentsOptions =
+export const getStudentsOptions = (students: Student[]): StudentOption[] => {
+  let studentOptions: StudentOption[] = [];
+  students.forEach((student) => {
+    studentOptions.push({
+      id: student.id,
+      name: student.name,
+      lastName: student.lastName,
+    });
+  });
+  return studentOptions;
+};
 
 // Crea una función para obtener el nombre completo de un estudiante por su id
 // La función debe recibir un array de estudiantes y el id del estudiante
