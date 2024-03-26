@@ -45,8 +45,14 @@ export const addGrade = (
     courseId: courseId,
     value: gradeValue,
   };
-  if (grades.includes(newGrade)) {
-    showErrorModal("Este curso ya ha sido evaluado");
+  if (
+    grades.some(
+      (grade) =>
+        grade.studentId === newGrade.studentId &&
+        grade.courseId === newGrade.courseId
+    )
+  ) {
+    showErrorModal("Este curso ya ha sido evaluado con anterioridad");
   } else {
     grades.push(newGrade);
   }
