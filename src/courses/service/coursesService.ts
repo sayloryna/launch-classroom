@@ -1,6 +1,6 @@
 import { showErrorModal } from "../../dom/index.js";
 import { courses } from "../../index.js";
-import { Course } from "../../types";
+import { Course, CourseOption } from "../../types";
 import { generateId } from "../../utils.js";
 
 export const getCoursesTotal = (courses: Course[]): number => {
@@ -14,7 +14,7 @@ export const addCourse = (courses: Course[], courseName: string): void => {
   };
   if (
     courses.some(
-      (course) => course.name.toLowerCase === newCourse.name.toLowerCase
+      (course) => course.name.toLowerCase() === newCourse.name.toLowerCase()
     )
   ) {
     showErrorModal("El curso ya existe");
@@ -31,9 +31,13 @@ export const deleteCourse = (courses: Course[], courseId: number): void => {
   });
 };
 
-// Crea una función para obtener las opciones de cursos para rellenar un select
-// La función debe recibir un array de cursos
-// La función debe devolver un array de objetos con dos propiedades: id y name
-// La propiedad id debe ser el id del curso
-// La propiedad name debe ser el nombre del curso
-// export const getCoursesOptions =
+export const getCoursesOptions = (courses: Course[]): CourseOption[] => {
+  let coursesOptions: CourseOption[] = [];
+  courses.forEach((course) => {
+    coursesOptions.push({
+      id: course.id,
+      name: course.name,
+    });
+  });
+  return coursesOptions;
+};

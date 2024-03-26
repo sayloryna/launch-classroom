@@ -45,12 +45,6 @@ export const deleteStudent = (students: Student[], studentId: number): void => {
   });
 };
 
-// Crea una función para obtener las opciones de estudiantes para rellenar un select
-// La función debe recibir un array de estudiantes
-// La función debe devolver un array de objetos con tres propiedades: id, name y lastName
-// La propiedad id debe ser el id del estudiante
-// La propiedad name debe ser el nombre del estudiante
-// La propiedad lastName debe ser el apellido del estudiante
 export const getStudentsOptions = (students: Student[]): StudentOption[] => {
   let studentOptions: StudentOption[] = [];
   students.forEach((student) => {
