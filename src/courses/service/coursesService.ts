@@ -25,7 +25,13 @@ export const addCourse = (courses: Course[], courseName: string): void => {
 
 // Crea una función para eliminar un curso de la lista de cursos
 // La función debe recibir un array de cursos y el id del curso a eliminar
-// export const deleteCourse =
+export const deleteCourse = (courses: Course[], courseId: number): void => {
+  courses.forEach((course, index) => {
+    if (course.id === courseId) {
+      courses.splice(index, 1);
+    }
+  });
+};
 
 // Crea una función para obtener las opciones de cursos para rellenar un select
 // La función debe recibir un array de cursos
