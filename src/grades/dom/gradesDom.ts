@@ -3,7 +3,7 @@ import { getStudentsOptions } from "../../students/service/studentsService.js";
 import { getCoursesOptions } from "../../courses/service/coursesService.js";
 import { Grade } from "../../types.js";
 import {
-  //   addGrade,
+  addGrade,
   //   deleteGrade,
   //   getGradeFullData,
   getGradesTotal,
@@ -80,13 +80,12 @@ gradesForm.addEventListener("submit", (event) => {
     "#course"
   ) as HTMLSelectElement;
   const gradeValue = gradesForm.querySelector("#grade") as HTMLInputElement;
-
-  /* addGrade(
+  addGrade(
     grades,
     +gradeStudentId.value,
     +gradeCourseId.value,
     +gradeValue.value
-  ); */
+  );
   gradesStorage.save(grades);
 
   renderGradesTable();
