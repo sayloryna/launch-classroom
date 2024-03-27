@@ -28,10 +28,7 @@ export const addStudent = (
   if (
     students.some(
       (student) =>
-        student.name === newStudent.name &&
-        student.lastName === newStudent.lastName &&
-        student.age === newStudent.age &&
-        student.email === newStudent.email
+        student.email.toLocaleLowerCase() === newStudent.email.toLowerCase()
     )
   ) {
     showErrorModal("El estudiante ya esta en la lista");
