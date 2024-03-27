@@ -61,8 +61,7 @@ export const getStudentsOptions = (students: Student[]): StudentOption[] => {
 // La función debe recibir un array de estudiantes y el id del estudiante
 export const getStudentNameById = (students: Student[], studentId: number) => {
   let student = students.find((student) => student.id === studentId);
-
   return student
-    ? (student.name, student.lastName)
-    : "El ID proporcionado no es válido";
+    ? `${student.name} ${student.lastName}`
+    : "No se encuentra el estudiante";
 };
