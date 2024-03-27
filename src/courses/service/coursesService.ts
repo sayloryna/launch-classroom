@@ -19,7 +19,7 @@ export const addCourse = (courses: Course[], courseName: string): void => {
   ) {
     showErrorModal("El curso ya existe");
   } else {
-    courses.unshift(newCourse);
+    courses.push(newCourse);
   }
 };
 

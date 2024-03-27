@@ -40,3 +40,13 @@ export type CourseOption = {
   id: number;
   name: string;
 };
+
+export type GradeFullData = {
+  id: number;
+  studentId: number;
+  courseId: number;
+  value: number;
+  studentName: string;
+  studentLastName: string;
+  courseName: string;
+};

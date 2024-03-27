@@ -59,4 +59,10 @@ export const getStudentsOptions = (students: Student[]): StudentOption[] => {
 
 // Crea una función para obtener el nombre completo de un estudiante por su id
 // La función debe recibir un array de estudiantes y el id del estudiante
-// export const getStudentNameById =
+export const getStudentNameById = (students: Student[], studentId: number) => {
+  let student = students.find((student) => student.id === studentId);
+
+  return student
+    ? (student.name, student.lastName)
+    : "El ID proporcionado no es válido";
+};

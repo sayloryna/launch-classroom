@@ -1,6 +1,6 @@
-import { courses, students } from "../../index.js";
+import { courses, grades, students } from "../../index.js";
 import { showErrorModal } from "../../dom/index.js";
-import { Grade } from "../../types";
+import { Grade, GradeFullData } from "../../types";
 import { generateId } from "../../utils.js";
 
 export const getGradesTotal = (grades: Grade[]): number => {
@@ -12,27 +12,38 @@ export const getGradesTotal = (grades: Grade[]): number => {
 // La función debe devolver un objeto con las mismas propiedades de la nota
 // más las propiedades studentName, studentLastName y courseName
 
-/*export const getGradeFullData = (grade: Grade): Object => {
-  return {
+export const getGradeFullData = (grade: Grade) => {
+  let additionalData = {
+    studentName:
+      students.find((student) => student.id === grade.studentId)?.name ??
+      "deleted",
+    studentLastName:
+      students.find((student) => student.id === grade.studentId)?.lastName ??
+      "user",
+    courseName:
+      courses.find((course) => course.id === grade.courseId)?.name ??
+      "deleted course",
+  };
+
+  let gradeData = {
     id: grade.id,
     studentId: grade.studentId,
     courseId: grade.courseId,
     value: grade.value,
-    studentName: students.find((student) => student.id === grade.studentId)
-      ?.name,
-    studentLastName: students.find((student) => student.id === grade.studentId)
-      ?.lastName,
-    courseName: courses.find((course) => course.id === grade.courseId)?.name,
   };
-};*/
+  let GradeFullData = Object.assign(additionalData, gradeData);
 
-// Crea una función para eliminar una nota de la lista de notas
-// La función debe recibir un array de notas y el id de la nota a eliminar
-// export const deleteGrade =
+  return GradeFullData;
+};
 
-// Crea una función para crear una nueva nota
-// La función debe recibir un array de notas, el id del estudiante, el id del curso y el valor de la nota
-// Si la nota ya existe, muestra un error con showErrorModal
+export const deleteGrade = (grades: Grade[], gradeId: number): void => {
+  grades.forEach((grade, index) => {
+    if (grade.id === gradeId) {
+      grades.splice(index, 1);
+    }
+  });
+};
+
 export const addGrade = (
   grades: Grade[],
   studentId: number,
