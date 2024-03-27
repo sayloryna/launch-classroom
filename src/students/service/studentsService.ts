@@ -30,7 +30,8 @@ export const addStudent = (
       (student) =>
         student.name === newStudent.name &&
         student.lastName === newStudent.lastName &&
-        student.age === newStudent.age
+        student.age === newStudent.age &&
+        student.email === newStudent.email
     )
   ) {
     showErrorModal("El estudiante ya esta en la lista");
