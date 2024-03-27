@@ -1,9 +1,10 @@
-import { courses } from "../../index.js";
-import { coursesStorage } from "../../storage/Storage.js";
+import { courses, grades } from "../../index.js";
+import { coursesStorage, gradesStorage } from "../../storage/Storage.js";
 import { Course } from "../../types.js";
 import {
   addCourse,
   deleteCourse,
+  deleteCourseGrades,
   getCoursesTotal,
 } from "../service/coursesService.js";
 
@@ -39,6 +40,9 @@ const createCourseRow = (course: Course): void => {
   row.querySelector("button")?.addEventListener("click", () => {
     deleteCourse(courses, course.id);
     coursesStorage.save(courses);
+
+    deleteCourseGrades(grades, course.id);
+    gradesStorage.save(grades);
 
     renderCoursesTable();
   });

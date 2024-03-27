@@ -1,6 +1,6 @@
 import { showErrorModal } from "../../dom/index.js";
 import { courses } from "../../index.js";
-import { Course, CourseOption } from "../../types";
+import { Course, CourseOption, Grade } from "../../types";
 import { generateId } from "../../utils.js";
 
 export const getCoursesTotal = (courses: Course[]): number => {
@@ -21,6 +21,14 @@ export const addCourse = (courses: Course[], courseName: string): void => {
   } else {
     courses.push(newCourse);
   }
+};
+
+export const deleteCourseGrades = (grades: Grade[], courseId: number): void => {
+  grades.forEach((grade, index) => {
+    if (grade.courseId === courseId) {
+      grades.splice(index, 1);
+    }
+  });
 };
 
 export const deleteCourse = (courses: Course[], courseId: number): void => {
