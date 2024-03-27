@@ -1,4 +1,4 @@
-import { courses, grades, students } from "../../index.js";
+import { courses, students } from "../../index.js";
 import { showErrorModal } from "../../dom/index.js";
 import { Grade, GradeFullData } from "../../types";
 import { generateId } from "../../utils.js";
@@ -7,33 +7,21 @@ export const getGradesTotal = (grades: Grade[]): number => {
   return grades.length;
 };
 
-// Crea una función para obtener los datos completos de una nota
-// La función debe recibir una nota
-// La función debe devolver un objeto con las mismas propiedades de la nota
-// más las propiedades studentName, studentLastName y courseName
+export const getGradeFullData = (grade: Grade): GradeFullData => {
+  let gradeStudent = students.find((student) => student.id === grade.studentId);
+  let gradeCourse = courses.find((course) => course.id === grade.courseId);
 
-export const getGradeFullData = (grade: Grade) => {
-  let additionalData = {
-    studentName:
-      students.find((student) => student.id === grade.studentId)?.name ??
-      "deleted",
-    studentLastName:
-      students.find((student) => student.id === grade.studentId)?.lastName ??
-      "user",
-    courseName:
-      courses.find((course) => course.id === grade.courseId)?.name ??
-      "deleted course",
-  };
-
-  let gradeData = {
+  let gradeFullData: GradeFullData = {
     id: grade.id,
     studentId: grade.studentId,
     courseId: grade.courseId,
     value: grade.value,
+    studentName: gradeStudent?.name ?? "estudiante",
+    studentLastName: gradeStudent?.lastName ?? "borrado",
+    courseName: gradeCourse?.name ?? "curso borrado",
   };
-  let GradeFullData = Object.assign(additionalData, gradeData);
 
-  return GradeFullData;
+  return gradeFullData;
 };
 
 export const deleteGrade = (grades: Grade[], gradeId: number): void => {

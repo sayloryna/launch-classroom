@@ -1,8 +1,9 @@
-import { students } from "../../index.js";
-import { studentsStorage } from "../../storage/Storage.js";
+import { grades, students } from "../../index.js";
+import { gradesStorage, studentsStorage } from "../../storage/Storage.js";
 import {
   addStudent,
   deleteStudent,
+  deleteStudentGrades,
   getStudentsTotal,
 } from "../service/studentsService.js";
 import { Student } from "../../types.js";
@@ -44,6 +45,8 @@ const createStudentRow = (student: Student): void => {
     deleteStudent(students, student.id);
     studentsStorage.save(students);
 
+    deleteStudentGrades(grades, student.id);
+    gradesStorage.save(grades);
     renderStudentsTable();
   });
 

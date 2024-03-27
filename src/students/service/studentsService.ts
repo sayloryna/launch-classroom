@@ -1,6 +1,8 @@
 import { showErrorModal } from "../../dom/index.js";
-import { students } from "../../index.js";
-import { Student, StudentOption } from "../../types.js";
+import { deleteGrade } from "../../grades/service/gradesService.js";
+import { students, grades } from "../../index.js";
+import { gradesStorage } from "../../storage/Storage.js";
+import { Grade, Student, StudentOption } from "../../types.js";
 import { generateId } from "../../utils.js";
 
 export const getStudentsTotal = (students: Student[]): number => {
@@ -37,6 +39,14 @@ export const addStudent = (
   }
 };
 
+export const deleteStudentGrades = (grades: Grade[], studentId: number) => {
+  grades.forEach((grade, index) => {
+    if (grade.studentId === studentId) {
+      grades.splice(index, 1);
+    }
+  });
+};
+
 export const deleteStudent = (students: Student[], studentId: number): void => {
   students.forEach((student, index) => {
     if (student.id === studentId) {
@@ -57,8 +67,6 @@ export const getStudentsOptions = (students: Student[]): StudentOption[] => {
   return studentOptions;
 };
 
-// Crea una función para obtener el nombre completo de un estudiante por su id
-// La función debe recibir un array de estudiantes y el id del estudiante
 export const getStudentNameById = (students: Student[], studentId: number) => {
   let student = students.find((student) => student.id === studentId);
   return student
