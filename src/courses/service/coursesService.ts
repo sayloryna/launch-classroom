@@ -1,5 +1,4 @@
 import { showErrorModal } from "../../dom/index.js";
-import { courses } from "../../index.js";
 import { Course, CourseOption, Grade } from "../../types";
 import { generateId } from "../../utils.js";
 
@@ -8,7 +7,7 @@ export const getCoursesTotal = (courses: Course[]): number => {
 };
 
 export const addCourse = (courses: Course[], courseName: string): void => {
-  let newCourse = {
+  const newCourse: Course = {
     id: generateId(courses),
     name: courseName,
   };
@@ -40,7 +39,7 @@ export const deleteCourse = (courses: Course[], courseId: number): void => {
 };
 
 export const getCoursesOptions = (courses: Course[]): CourseOption[] => {
-  let coursesOptions: CourseOption[] = [];
+  const coursesOptions: CourseOption[] = [];
   courses.forEach((course) => {
     coursesOptions.push({
       id: course.id,
