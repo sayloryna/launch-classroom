@@ -1,7 +1,4 @@
 import { showErrorModal } from "../../dom/index.js";
-import { deleteGrade } from "../../grades/service/gradesService.js";
-import { students, grades } from "../../index.js";
-import { gradesStorage } from "../../storage/Storage.js";
 import { Grade, Student, StudentOption } from "../../types.js";
 import { generateId } from "../../utils.js";
 
@@ -17,12 +14,12 @@ export const addStudent = (
   email: string,
   phoneNumber: string
 ): void => {
-  let newStudent = {
+  const newStudent: Student = {
     id: generateId(students),
-    name,
-    lastName,
+    name: name.toLocaleUpperCase(),
+    lastName: lastName.toLocaleUpperCase(),
     age,
-    email,
+    email: email.toLowerCase(),
     phoneNumber,
   };
   if (
@@ -31,7 +28,7 @@ export const addStudent = (
         student.email.toLocaleLowerCase() === newStudent.email.toLowerCase()
     )
   ) {
-    showErrorModal("El estudiante ya esta en la lista");
+    showErrorModal("Ya existe un estudiante con ese email");
   } else {
     students.push(newStudent);
   }
@@ -54,7 +51,7 @@ export const deleteStudent = (students: Student[], studentId: number): void => {
 };
 
 export const getStudentsOptions = (students: Student[]): StudentOption[] => {
-  let studentOptions: StudentOption[] = [];
+  const studentOptions: StudentOption[] = [];
   students.forEach((student) => {
     studentOptions.push({
       id: student.id,
@@ -66,7 +63,7 @@ export const getStudentsOptions = (students: Student[]): StudentOption[] => {
 };
 
 export const getStudentNameById = (students: Student[], studentId: number) => {
-  let student = students.find((student) => student.id === studentId);
+  const student = students.find((student) => student.id === studentId);
   return student
     ? `${student.name} ${student.lastName}`
     : "No se encuentra el estudiante";

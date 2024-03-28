@@ -8,10 +8,12 @@ export const getGradesTotal = (grades: Grade[]): number => {
 };
 
 export const getGradeFullData = (grade: Grade): GradeFullData => {
-  let gradeStudent = students.find((student) => student.id === grade.studentId);
-  let gradeCourse = courses.find((course) => course.id === grade.courseId);
+  const gradeStudent = students.find(
+    (student) => student.id === grade.studentId
+  );
+  const gradeCourse = courses.find((course) => course.id === grade.courseId);
 
-  let gradeFullData: GradeFullData = {
+  const gradeFullData: GradeFullData = {
     id: grade.id,
     studentId: grade.studentId,
     courseId: grade.courseId,
@@ -38,7 +40,7 @@ export const addGrade = (
   courseId: number,
   gradeValue: number
 ): void => {
-  let newGrade: Grade = {
+  const newGrade: Grade = {
     id: generateId(grades),
     studentId: studentId,
     courseId: courseId,

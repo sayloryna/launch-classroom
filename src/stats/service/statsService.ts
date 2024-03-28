@@ -1,9 +1,6 @@
-import { courses, grades, students } from "../../index.js";
-import { CourseStats, Student, Course, Grade } from "../../types";
+import { grades } from "../../index.js";
+import { CourseStats, Grade } from "../../types";
 
-// Crea una función para obtener las estadísticas de un curso
-// La función debe recibir el id de un curso
-// La función debe devolver un objeto de tipo CourseStats
 export const getCourseStats = (courseId: number): CourseStats => {
   const courseGrades: Grade[] = grades.filter(
     (grade) => grade.courseId === courseId
@@ -13,7 +10,7 @@ export const getCourseStats = (courseId: number): CourseStats => {
     (gradeA, gradeB) => gradeB.value - gradeA.value
   );
 
-  const courseStats = {
+  const courseStats: CourseStats = {
     courseId: courseId,
     studentsCount: courseGrades.length,
     passedCount: courseGrades.filter((grade) => grade.value >= 5).length,
